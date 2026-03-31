@@ -1,14 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Filmes</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main-styles.css">
 </head>
+
 <body>
-    
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">CINE<span>CTRL</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                style="color:var(--gold)"><span style="font-size:1.4rem">☰</span></button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="cadastro-filmes.html">Filmes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro-salas.html">Salas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro-sessoes.html">Sessões</a></li>
+                    <li class="nav-item"><a class="nav-link" href="venda-ingressos.html">Ingressos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sessoes.html">Programação</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <p class="page-eyebrow">🎬 Módulo 01</p>
+            <h1 class="page-title">CADASTRO DE <span>FILMES</span></h1>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="section-badge">Novo Cadastro</div>
+                <div class="form-card">
+                    <div id="alertSucesso" class="alert-success-custom">✓ Filme salvo com sucesso!</div>
+                    <div id="alertErro" class="alert-error-custom">✗ Preencha todos os campos obrigatórios.</div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Título *</label>
+                            <input type="text" id="titulo" class="form-control" placeholder="Ex: Interestelar">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Gênero *</label>
+                            <select id="genero" class="form-select">
+                                <option value="">Selecione...</option>
+                                <option>Ação</option>
+                                <option>Animação</option>
+                                <option>Aventura</option>
+                                <option>Comédia</option>
+                                <option>Drama</option>
+                                <option>Fantasia</option>
+                                <option>Ficção Científica</option>
+                                <option>Horror</option>
+                                <option>Romance</option>
+                                <option>Suspense</option>
+                                <option>Terror</option>
+                                <option>Thriller</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Classificação Indicativa *</label>
+                            <select id="classificacao" class="form-select">
+                                <option value="">Selecione...</option>
+                                <option>Livre</option>
+                                <option>10 anos</option>
+                                <option>12 anos</option>
+                                <option>14 anos</option>
+                                <option>16 anos</option>
+                                <option>18 anos</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Descrição</label>
+                            <textarea id="descricao" class="form-control" placeholder="Sinopse do filme..."></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Duração (minutos) *</label>
+                            <input type="number" id="duracao" class="form-control" placeholder="120" min="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Data de Estreia *</label>
+                            <input type="date" id="estreia" class="form-control">
+                        </div>
+                        <div class="col-12 mt-2">
+                            <div class="d-flex gap-3 flex-wrap">
+                                <button class="btn-salvar" onclick="salvarFilme()">Salvar Filme</button>
+                                <button class="btn-limpar" onclick="limparForm()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="section-badge">Cadastrados</div>
+                <div class="list-card">
+                    <div class="list-title">🎞 Filmes</div>
+                    <div id="listaFilmes"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>CineControl &copy; 2025 — Sistema Web de Controle de Cinema</p>
+    </footer>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 </body>
+
 </html>
