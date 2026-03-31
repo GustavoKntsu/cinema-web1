@@ -10,7 +10,7 @@
   --gold2: #c9952a;
   --red: #e63946;
   --text: #f0eae0;
-  --muted: #8a8090;
+  --muted: #a39ca8; /* Clareei um pouco o cinza global */
   --card: #13131f;
   --border: #1e1e30;
 }
@@ -25,22 +25,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Grain overlay */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.3;
-}
-
 /* =============================================
    NAVBAR
    ============================================= */
 .navbar {
   background: rgba(8, 8, 16, 0.95);
-  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0.8rem 2rem;
   position: sticky;
@@ -55,7 +44,7 @@ body::before {
 }
 .navbar-brand span { color: var(--red); }
 .nav-link {
-  color: var(--muted) !important;
+  color: #e2e2e2 !important; /* CORRIGIDO: Links da Navbar mais claros */
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -67,7 +56,7 @@ body::before {
 .nav-link.active { color: var(--gold) !important; }
 
 /* =============================================
-   PAGE HEADER
+   CABEÇALHOS DAS PÁGINAS
    ============================================= */
 .page-header {
   padding: 3rem 0 2rem;
@@ -90,7 +79,7 @@ body::before {
 .page-title span { color: var(--gold); }
 
 /* =============================================
-   FORM
+   FORMULÁRIOS
    ============================================= */
 .form-card {
   background: var(--card);
@@ -102,7 +91,7 @@ body::before {
   font-size: 0.78rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--text);
   margin-bottom: 0.4rem;
   font-weight: 500;
 }
@@ -115,7 +104,6 @@ body::before {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   padding: 0.65rem 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .form-control:focus,
 .form-select:focus {
@@ -130,7 +118,7 @@ body::before {
 textarea.form-control { resize: vertical; min-height: 100px; }
 
 /* =============================================
-   BUTTONS
+   BOTÕES CUSTOMIZADOS
    ============================================= */
 .btn-salvar {
   background: var(--gold);
@@ -142,7 +130,6 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   border: none;
   padding: 0.85rem 2.5rem;
   border-radius: 2px;
-  transition: background 0.2s;
   cursor: pointer;
 }
 .btn-salvar:hover { background: var(--gold2); }
@@ -150,61 +137,18 @@ textarea.form-control { resize: vertical; min-height: 100px; }
 .btn-limpar {
   background: transparent;
   border: 1px solid var(--border);
-  color: var(--muted);
+  color: var(--text);
   font-size: 0.85rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 0.85rem 2rem;
   border-radius: 2px;
-  transition: all 0.2s;
   cursor: pointer;
 }
 .btn-limpar:hover { border-color: var(--red); color: var(--red); }
 
-.btn-gold {
-  background: var(--gold);
-  color: #000;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: none;
-  padding: 0.7rem 2rem;
-  border-radius: 2px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.2s;
-}
-.btn-gold:hover { background: var(--gold2); color: #000; }
-
-.btn-outline-gold {
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  background: transparent;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 0.7rem 2rem;
-  border-radius: 2px;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.2s;
-}
-.btn-outline-gold:hover { background: var(--gold); color: #000; }
-
-.btn-del {
-  background: transparent;
-  border: none;
-  color: var(--muted);
-  cursor: pointer;
-  padding: 0.3rem;
-  font-size: 0.85rem;
-  transition: color 0.2s;
-}
-.btn-del:hover { color: var(--red); }
-
 /* =============================================
-   ALERTS
+   ALERTAS E BADGES
    ============================================= */
 .alert-success-custom {
   background: rgba(34, 197, 94, 0.1);
@@ -226,18 +170,21 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   display: none;
   margin-bottom: 1.5rem;
 }
-.alert-warn-custom {
-  background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.2);
-  color: #fbbf24;
-  padding: 1rem 1.5rem;
+.section-badge {
+  display: inline-block;
+  background: rgba(245, 200, 66, 0.08);
+  border: 1px solid rgba(245, 200, 66, 0.2);
+  color: var(--gold);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
   border-radius: 2px;
-  font-size: 0.83rem;
   margin-bottom: 1rem;
 }
 
 /* =============================================
-   LIST CARDS
+   CARDS DE LISTAGEM LATERAL
    ============================================= */
 .list-card {
   background: var(--card);
@@ -252,98 +199,20 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   letter-spacing: 1px;
   margin-bottom: 1.5rem;
 }
-.empty-state {
-  text-align: center;
-  padding: 3rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.empty-icon { font-size: 2.5rem; margin-bottom: 0.8rem; opacity: 0.4; }
 
 /* =============================================
-   SHARED COMPONENTS
-   ============================================= */
-.section-badge {
-  display: inline-block;
-  background: rgba(245, 200, 66, 0.08);
-  border: 1px solid rgba(245, 200, 66, 0.2);
-  color: var(--gold);
-  font-size: 0.7rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 0.25rem 0.75rem;
-  border-radius: 2px;
-  margin-bottom: 1rem;
-}
-.badge-new {
-  background: var(--red);
-  color: #fff;
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-  padding: 0.2rem 0.5rem;
-  border-radius: 2px;
-  text-transform: uppercase;
-  vertical-align: middle;
-  margin-left: 0.4rem;
-}
-
-/* =============================================
-   FOOTER
-   ============================================= */
-footer {
-  padding: 2rem;
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--border);
-  border-top: 1px solid var(--border);
-  margin-top: 5rem;
-}
-
-/* =============================================
-   INDEX — HERO
+   PÁGINA INICIAL (HERO E DASHBOARD)
    ============================================= */
 .hero {
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
   background: radial-gradient(ellipse at 50% 60%, #1a0a2e 0%, var(--bg) 70%);
-}
-.hero-bg-lines {
-  position: absolute; inset: 0;
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(245,200,66,0.04) 60px),
-    repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(245,200,66,0.04) 60px);
-}
-.film-strip {
-  position: absolute; top: 0; left: 0; right: 0; height: 8px;
-  background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 16px, var(--bg) 16px, var(--bg) 32px);
-  opacity: 0.4;
-}
-.film-strip-bottom {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 8px;
-  background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 16px, var(--bg) 16px, var(--bg) 32px);
-  opacity: 0.4;
 }
 .hero-content {
   text-align: center;
-  position: relative;
   z-index: 2;
-  animation: fadeUp 0.8s ease both;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.hero-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.2rem;
-  opacity: 0.8;
 }
 .hero-title {
   font-family: 'Bebas Neue', sans-serif;
@@ -359,12 +228,7 @@ footer {
   max-width: 420px;
   margin: 0 auto 2.5rem;
   line-height: 1.7;
-  font-weight: 300;
 }
-
-/* =============================================
-   INDEX — STATS BAR
-   ============================================= */
 .stats-bar {
   background: var(--card);
   border-top: 1px solid var(--border);
@@ -386,22 +250,8 @@ footer {
 }
 
 /* =============================================
-   INDEX — MENU CARDS
+   CARDS DE MENU (NAVEGAÇÃO RÁPIDA)
    ============================================= */
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
-  color: var(--text);
-  letter-spacing: 2px;
-  margin-bottom: 0.3rem;
-}
-.section-sub {
-  font-size: 0.85rem;
-  color: var(--muted);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 3rem;
-}
 .menu-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -410,26 +260,13 @@ footer {
   text-decoration: none;
   color: var(--text);
   display: block;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-.menu-card::before {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--red));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+  transition: transform 0.25s, border-color 0.25s;
 }
 .menu-card:hover {
   transform: translateY(-4px);
   border-color: var(--gold2);
-  box-shadow: 0 12px 40px rgba(245, 200, 66, 0.08);
   color: var(--text);
 }
-.menu-card:hover::before { transform: scaleX(1); }
-.card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
 .card-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.4rem;
@@ -438,227 +275,15 @@ footer {
   margin-bottom: 0.5rem;
 }
 .card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
-.card-arrow {
-  position: absolute; top: 1.5rem; right: 1.5rem;
+
+/* =============================================
+   RODAPÉ
+   ============================================= */
+footer {
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
   color: var(--border);
-  font-size: 1.1rem;
-  transition: color 0.2s, transform 0.2s;
-}
-.menu-card:hover .card-arrow { color: var(--gold); transform: translate(2px, -2px); }
-
-/* =============================================
-   FILMES — LIST
-   ============================================= */
-.film-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
-  gap: 1rem;
-}
-.film-item:last-child { border-bottom: none; }
-.film-name { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 0.2rem; }
-.film-meta { font-size: 0.78rem; color: var(--muted); }
-.film-badge {
-  background: rgba(245, 200, 66, 0.1);
-  border: 1px solid rgba(245, 200, 66, 0.2);
-  color: var(--gold);
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  padding: 0.2rem 0.6rem;
-  border-radius: 2px;
-  white-space: nowrap;
-}
-
-/* =============================================
-   SALAS — GRID
-   ============================================= */
-.sala-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 0.75rem;
-}
-.sala-box {
-  background: #0a0a14;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.2rem;
-  position: relative;
-  transition: border-color 0.2s;
-}
-.sala-box:hover { border-color: var(--gold2); }
-.sala-tipo { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.4rem; }
-.sala-nome { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 0.2rem; }
-.sala-cap { font-size: 0.78rem; color: var(--muted); }
-.sala-box .btn-del { position: absolute; top: 0.5rem; right: 0.5rem; color: var(--border); }
-.tipo-2d { color: #60a5fa; }
-.tipo-3d { color: #a78bfa; }
-.tipo-imax { color: var(--gold); }
-
-/* =============================================
-   SESSÕES — LIST
-   ============================================= */
-.sessao-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  margin-bottom: 0.75rem;
-  background: #0a0a14;
-  transition: border-color 0.2s;
-  position: relative;
-}
-.sessao-item:hover { border-color: var(--gold2); }
-.sessao-filme { font-weight: 600; font-size: 0.95rem; color: var(--text); padding-right: 2rem; }
-.sessao-meta { font-size: 0.78rem; color: var(--muted); }
-.sessao-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gold); }
-.sessao-item .btn-del { position: absolute; top: 0.75rem; right: 0.75rem; color: var(--border); }
-
-/* =============================================
-   VENDA — PREVIEW & TICKETS
-   ============================================= */
-.sessao-preview {
-  background: #0a0a14;
-  border: 1px solid rgba(245, 200, 66, 0.2);
-  border-radius: 3px;
-  padding: 1.2rem;
-  margin-top: 0.5rem;
-  display: none;
-}
-.preview-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.3rem;
-  color: var(--gold);
-  letter-spacing: 1px;
-  margin-bottom: 0.3rem;
-}
-.preview-meta { font-size: 0.8rem; color: var(--muted); }
-.preview-price {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.6rem;
-  color: var(--gold);
-  margin-top: 0.5rem;
-}
-
-.ticket-item {
-  background: #0a0a14;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 1rem 1.2rem;
-  margin-bottom: 0.75rem;
-  position: relative;
-  transition: border-color 0.2s;
-}
-.ticket-item:hover { border-color: var(--gold2); }
-.ticket-item .btn-del { position: absolute; top: 0.75rem; right: 0.75rem; color: var(--border); }
-.ticket-id { font-size: 0.65rem; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 0.3rem; }
-.ticket-cliente { font-weight: 600; font-size: 0.9rem; color: var(--text); }
-.ticket-sessao { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.2rem; }
-.ticket-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.4rem; }
-.ticket-badge { font-size: 0.7rem; letter-spacing: 1px; padding: 0.15rem 0.5rem; border-radius: 2px; }
-.badge-assento  { background: rgba(96,165,250,0.12);  color: #60a5fa;  border: 1px solid rgba(96,165,250,0.2); }
-.badge-pagamento{ background: rgba(167,139,250,0.12); color: #a78bfa;  border: 1px solid rgba(167,139,250,0.2); }
-.badge-preco    { background: rgba(245,200,66,0.1);   color: var(--gold); border: 1px solid rgba(245,200,66,0.2); }
-
-/* =============================================
-   PROGRAMAÇÃO — CARDS
-   ============================================= */
-.filters-bar {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.2rem 1.5rem;
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.filter-label { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-.form-select-sm-custom {
-  background: #0a0a14;
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 2px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
-  padding: 0.4rem 0.8rem;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-.form-select-sm-custom:focus { outline: none; border-color: var(--gold); }
-.form-select-sm-custom option { background: #0a0a14; }
-.results-count { font-size: 0.78rem; color: var(--muted); margin-left: auto; }
-
-.sessao-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  animation: fadeIn 0.4s ease both;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.sessao-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--gold2);
-  box-shadow: 0 8px 30px rgba(245, 200, 66, 0.07);
-}
-.card-accent { height: 3px; background: linear-gradient(90deg, var(--gold), var(--red)); }
-.card-body-custom { padding: 1.5rem; }
-.card-film-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  color: var(--text);
-  margin-bottom: 0.2rem;
-  line-height: 1.1;
-}
-.card-sala { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
-.card-info-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
-.info-chip { font-size: 0.7rem; letter-spacing: 1px; padding: 0.2rem 0.6rem; border-radius: 2px; }
-.chip-datetime  { background: rgba(96,165,250,0.1);  color: #93c5fd; border: 1px solid rgba(96,165,250,0.15); }
-.chip-idioma    { background: rgba(167,139,250,0.1); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.15); }
-.chip-formato   { background: rgba(52,211,153,0.1);  color: #6ee7b7; border: 1px solid rgba(52,211,153,0.15); }
-.card-footer-custom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
   border-top: 1px solid var(--border);
+  margin-top: 5rem;
 }
-.preco-label { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.1rem; }
-.preco-valor { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 1px; }
-.btn-comprar {
-  background: var(--gold);
-  color: #000;
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: none;
-  padding: 0.6rem 1.3rem;
-  border-radius: 2px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.2s, transform 0.1s;
-  cursor: pointer;
-}
-.btn-comprar:hover { background: var(--gold2); transform: scale(1.03); color: #000; }
-
-.empty-wrap { text-align: center; padding: 6rem 2rem; }
-.empty-icon-big { font-size: 4rem; opacity: 0.2; margin-bottom: 1rem; }
-.empty-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  color: var(--muted);
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
-}
-.empty-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
