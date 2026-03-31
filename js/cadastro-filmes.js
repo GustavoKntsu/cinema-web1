@@ -1,5 +1,7 @@
 // filmes.js — Cadastro de Filmes
 
+let idEdicao = null; 
+
 function getFilmes() {
   return JSON.parse(localStorage.getItem('filmes') || '[]');
 }
@@ -9,6 +11,23 @@ function saveFilmes(filmes) {
     localStorage.setItem('filmes', JSON.stringify(filmes));
   } catch (e) {
     if (e.name === 'QuotaExceededError') alert('Limite de armazenamento atingido!');
+  }
+}
+
+function editarFilme(id) {
+  const filmes = getFilmes();
+  const filme = filmes.find(f => f.id === id); 
+
+  if (filme) {
+    document.getElementById('titulo').value = filme.titulo;
+    document.getElementById('genero').value = filme.genero;
+    document.getElementById('classificacao').value = filme.classificacao;
+    document.getElementById('duracao').value = filme.duracao;
+    document.getElementById('estreia').value = filme.estreia;
+    document.getElementById('descricao').value = filme.descricao;
+
+    idEdicao = id;
+    document.querySelector('.btn-salvar').textContent = "Atualizar Filme";
   }
 }
 
@@ -25,9 +44,20 @@ function salvarFilme() {
     return;
   }
 
-  const filme = { id: Date.now(), titulo, genero, classificacao, duracao, estreia, descricao };
   const filmes = getFilmes();
-  filmes.push(filme);
+
+  if (idEdicao) {
+    const index = filmes.findIndex(f => f.id === idEdicao);
+    if (index !== -1) {
+      filmes[index] = { ...filmes[index], titulo, genero, classificacao, duracao, estreia, descricao };
+    }
+    idEdicao = null;
+    document.querySelector('.btn-salvar').textContent = "Salvar Filme";
+  } else {
+    const filme = { id: Date.now(), titulo, genero, classificacao, duracao, estreia, descricao };
+    filmes.push(filme);
+  }
+
   saveFilmes(filmes);
 
   mostrarAlerta('sucesso');
@@ -46,6 +76,9 @@ function limparForm() {
     const el = document.getElementById(id);
     el.tagName === 'SELECT' ? el.selectedIndex = 0 : el.value = '';
   });
+  
+  idEdicao = null;
+  document.querySelector('.btn-salvar').textContent = "Salvar Filme";
 }
 
 function mostrarAlerta(tipo) {
@@ -69,6 +102,7 @@ function renderLista() {
     return;
   }
 
+  // Os botões ✏️ e 🗑️ perfeitamente alinhados
   el.innerHTML = filmes.map(f => `
     <div class="film-item">
       <div>
@@ -77,7 +111,8 @@ function renderLista() {
       </div>
       <div class="d-flex align-items-center gap-2 flex-shrink-0">
         <span class="film-badge">${f.classificacao}</span>
-        <button class="btn-del" onclick="excluirFilme(${f.id})" title="Excluir">✕</button>
+        <button class="btn-edit" onclick="editarFilme(${f.id})" title="Editar" style="background:transparent; border:none; font-size:1.2rem; cursor:pointer;">✏️</button>
+        <button class="btn-del" onclick="excluirFilme(${f.id})" title="Excluir" style="background:transparent; border:none; font-size:1.2rem; cursor:pointer;">🗑️</button>
       </div>
     </div>
   `).join('');
