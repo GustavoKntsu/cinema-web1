@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sessões</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main-styles.css">
 </head>
@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">CINE<span>CTRL</span></a>
+            <a class="navbar-brand" href="index.html">APOLLO<span>CINE</span></a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
                 style="color:var(--gold)"><span style="font-size:1.4rem">☰</span></button>
             <div class="collapse navbar-collapse" id="navMenu">
@@ -36,32 +36,42 @@
     </div>
 
     <div class="container pb-5">
-        <div class="filters-bar">
-            <span class="filter-label">Filtrar:</span>
-            <select class="form-select-sm-custom" id="filtroFilme" onchange="renderSessoes()">
+        <div
+            class="bg-dark border border-secondary rounded p-3 mb-4 d-flex flex-wrap align-items-center gap-3 shadow-sm">
+            <span class="text-warning text-uppercase small fw-bold" style="letter-spacing: 1px;">⚙️ Filtros:</span>
+
+            <select class="form-select form-select-sm bg-dark text-light border-secondary w-auto" id="filtroFilme"
+                onchange="renderSessoes()">
                 <option value="">Todos os filmes</option>
             </select>
-            <select class="form-select-sm-custom" id="filtroIdioma" onchange="renderSessoes()">
+
+            <select class="form-select form-select-sm bg-dark text-light border-secondary w-auto" id="filtroIdioma"
+                onchange="renderSessoes()">
                 <option value="">Idioma</option>
                 <option value="Dublado">Dublado</option>
                 <option value="Legendado">Legendado</option>
             </select>
-            <select class="form-select-sm-custom" id="filtroFormato" onchange="renderSessoes()">
+
+            <select class="form-select form-select-sm bg-dark text-light border-secondary w-auto" id="filtroFormato"
+                onchange="renderSessoes()">
                 <option value="">Formato</option>
                 <option value="2D">2D</option>
                 <option value="3D">3D</option>
             </select>
-            <span class="results-count" id="countSessoes">0 sessões</span>
+
+            <span class="ms-auto text-muted small" id="countSessoes">0 sessões</span>
         </div>
 
         <div class="row g-3" id="gridSessoes"></div>
     </div>
 
     <footer>
-        <p>CineControl &copy; 2025 — Sistema Web de Controle de Cinema</p>
+        <p>CineControl &copy; 2026 — Sistema Web de Controle de Cinema</p>
     </footer>
+
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/programacao.js"></script>
 </body>
 
 </html>
