@@ -1,11 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dacumento</title>
+    <title>Cinema</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
+
 <body>
-   <h1>Olá, mundo!</h1> 
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">CINE<span>CTRL</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                style="color:var(--gold)">
+                <span style="font-size:1.4rem">☰</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro-filmes.html">Filmes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro-salas.html">Salas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro-sessoes.html">Sessões</a></li>
+                    <li class="nav-item"><a class="nav-link" href="venda-ingressos.html">Ingressos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sessoes.html">Programação</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg-lines"></div>
+        <div class="film-strip"></div>
+        <div class="film-strip-bottom"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">✦ Sistema de Controle ✦</p>
+            <h1 class="hero-title">CINE<span>CONTROL</span></h1>
+            <p class="hero-sub">Gerencie filmes, salas, sessões e vendas de ingressos em um só lugar.</p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="sessoes.html" class="btn-gold">Ver Programação</a>
+                <a href="cadastro-filmes.html" class="btn-outline-gold">Cadastrar Filme</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-num" id="statFilmes">0</div>
+                    <div class="stat-label">Filmes</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-num" id="statSalas">0</div>
+                    <div class="stat-label">Salas</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-num" id="statSessoes">0</div>
+                    <div class="stat-label">Sessões</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-num" id="statIngressos">0</div>
+                    <div class="stat-label">Ingressos Vendidos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MENU CARDS -->
+    <section class="py-5 mt-3">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-sub">Navegação Rápida</p>
+                <h2 class="section-title">Módulos do Sistema</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <a href="cadastro-filmes.html" class="menu-card">
+                        <div class="card-arrow">↗</div>
+                        <div class="card-icon">🎬</div>
+                        <div class="card-title">Cadastro de Filmes</div>
+                        <p class="card-desc">Adicione títulos, gêneros, classificações e informações completas dos
+                            filmes.</p>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <a href="cadastro-salas.html" class="menu-card">
+                        <div class="card-arrow">↗</div>
+                        <div class="card-icon">🏟️</div>
+                        <div class="card-title">Cadastro de Salas</div>
+                        <p class="card-desc">Configure salas 2D, 3D e IMAX com nome e capacidade de público.</p>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <a href="cadastro-sessoes.html" class="menu-card">
+                        <div class="card-arrow">↗</div>
+                        <div class="card-icon">📅</div>
+                        <div class="card-title">Cadastro de Sessões</div>
+                        <p class="card-desc">Vincule filmes a salas, defina horários, preços e idioma das sessões.</p>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <a href="venda-ingressos.html" class="menu-card">
+                        <div class="card-arrow">↗</div>
+                        <div class="card-icon">🎟️</div>
+                        <div class="card-title">Venda de Ingressos</div>
+                        <p class="card-desc">Realize vendas, registre assentos, clientes e formas de pagamento.</p>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <a href="sessoes.html" class="menu-card">
+                        <div class="card-arrow">↗</div>
+                        <div class="card-icon">🎥</div>
+                        <div class="card-title">Programação <span class="badge-new">Ao vivo</span></div>
+                        <p class="card-desc">Confira todas as sessões disponíveis e compre ingressos diretamente.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>CineControl &copy; 2025 — Sistema Web de Controle de Cinema</p>
+    </footer>
+
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
 </body>
+
 </html>
