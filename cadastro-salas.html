@@ -1,14 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastrar Salas</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main-styles.css">
 </head>
+
 <body>
-    
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">APOLLO<span>CINE</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                style="color:var(--gold)"><span style="font-size:1.4rem">☰</span></button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro-filmes.html">Filmes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="cadastro-salas.html">Salas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cadastro-sessoes.html">Sessões</a></li>
+                    <li class="nav-item"><a class="nav-link" href="venda-ingressos.html">Ingressos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sessoes.html">Programação</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <p class="page-eyebrow">🏟️ Módulo 02</p>
+            <h1 class="page-title">CADASTRO DE <span>SALAS</span></h1>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <div class="section-badge">Nova Sala</div>
+                <div class="form-card">
+                    <div id="alertSucesso" class="alert-success-custom">✓ Sala salva com sucesso!</div>
+                    <div id="alertErro" class="alert-error-custom">✗ Preencha todos os campos obrigatórios.</div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Nome da Sala *</label>
+                            <input type="text" id="nome" class="form-control" placeholder="Ex: Sala 1, Sala VIP...">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Capacidade *</label>
+                            <input type="number" id="capacidade" class="form-control" placeholder="150" min="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Tipo *</label>
+                            <select id="tipo" class="form-select">
+                                <option value="">Selecione...</option>
+                                <option value="2D">2D</option>
+                                <option value="3D">3D</option>
+                                <option value="IMAX">IMAX</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <div class="d-flex gap-3">
+                                <button class="btn-salvar" onclick="salvarSala()">Salvar Sala</button>
+                                <button class="btn-limpar" onclick="limparForm()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="section-badge">Cadastradas</div>
+                <div class="list-card">
+                    <div class="list-title">🏟 Salas</div>
+                    <div id="listaSalas"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>CineControl &copy; 2026 — Sistema Web de Controle de Cinema</p>
+    </footer>
+
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/salas.js"></script>
 </body>
+
 </html>
